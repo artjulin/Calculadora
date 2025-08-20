@@ -1,39 +1,50 @@
+Calculadora em HTML, CSS e JavaScript
+Aqui está o código para uma calculadora simples, com cada parte em seu próprio arquivo, como você pediu. Você pode copiar cada bloco de código e salvar com o nome de arquivo correspondente para montar a sua calculadora.
+
+1. HTML (arquivo: index.html)
+Este arquivo cria a estrutura da calculadora, incluindo o visor e os botões.
+
+HTML
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculadora</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator">
-        <input type="text" class="display" id="display" readonly>
+        <div class="display">
+            <div id="history"></div>
+            <div id="result">0</div>
+        </div>
         <div class="buttons">
-            <button class="operator" onclick="clearDisplay()">AC</button>
-            <button class="operator" onclick="deleteLast()">DEL</button>
-            <button class="operator" onclick="appendOperator('/')">/</button>
-            <button class="operator" onclick="appendOperator('X')">X</button>
-            
-            <button onclick="appendNumber('7')">7</button>
-            <button onclick="appendNumber('8')">8</button>
-            <button onclick="appendNumber('9')">9</button>
-            <button class="operator" onclick="appendOperator('-')">-</button>
-            
-            <button onclick="appendNumber('4')">4</button>
-            <button onclick="appendNumber('5')">5</button>
-            <button onclick="appendNumber('6')">6</button>
-            <button class="operator" onclick="appendOperator('+')">+</button>
-            
-            <button onclick="appendNumber('1')">1</button>
-            <button onclick="appendNumber('2')">2</button>
-            <button onclick="appendNumber('3')">3</button>
-            <button class="equals" onclick="calculate()">=</button>
-            
-            <button class="zero" onclick="appendNumber('0')">0</button>
-            <button onclick="appendNumber('.')">.</button>
+            <button class="btn-clear">C</button>
+            <button class="btn-op">&divide;</button>
+            <button class="btn-op">&times;</button>
+            <button class="btn-op">&minus;</button>
+            <button class="btn-op">+</button>
+
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="btn-equal">=</button>
+
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+
+            <button class="btn-zero">0</button>
+            <button class="btn-dot">.</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
