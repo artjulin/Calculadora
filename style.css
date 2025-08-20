@@ -2,70 +2,79 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Fundo com gradiente suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */
+    margin: 0;
 }
 
 .calculadora {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    width: 320px;
+    background-color: #ffffff; /* Fundo branco para a calculadora */
+    padding: 25px;
+    border-radius: 20px; /* Bordas mais arredondadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 350px;
+    border: 1px solid #f0f0f0;
 }
 
 .tela {
     width: 100%;
-    height: 50px;
-    background-color: #444;
+    height: 80px; /* Altura da tela aumentada */
+    background-color: #f7f7f7; /* Fundo da tela mais claro */
     border: none;
     text-align: right;
-    font-size: 2.5em;
-    color: #fff;
-    padding: 10px;
+    font-size: 2.8em;
+    color: #333;
+    padding: 15px;
     box-sizing: border-box;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    pointer-events: none; /* Impede a digitação manual */
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra interna para profundidade */
 }
 
 .botoes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 15px; /* Aumenta o espaço entre os botões */
 }
 
 button {
-    background-color: #555;
-    color: #fff;
+    background-color: #e0e0e0; /* Botões cinza claro */
+    color: #333;
     border: none;
-    padding: 20px;
-    font-size: 1.5em;
-    border-radius: 5px;
+    padding: 22px;
+    font-size: 1.6em;
+    border-radius: 15px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease-in-out; /* Transição mais suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #777;
+    background-color: #d0d0d0;
+    transform: translateY(-2px); /* Efeito de elevação */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .operador {
-    background-color: #ff9500;
+    background-color: #6a11cb; /* Cor roxa para operadores */
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(106, 17, 203, 0.3);
 }
 
 .operador:hover {
-    background-color: #ffb547;
+    background-color: #8c43e0;
 }
 
 .igual {
-    background-color: #007bff;
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Gradiente no botão de igual */
+    color: #fff;
     grid-column: span 2;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4);
 }
 
 .igual:hover {
-    background-color: #0056b3;
+    background: linear-gradient(45deg, #0056b3, #004085);
 }
 
 .zero {
