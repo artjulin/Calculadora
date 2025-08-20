@@ -1,87 +1,80 @@
-body {
-    display: flex;
+display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
+    margin: 0;
 }
 
 .calculator {
-    background-color: #222;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
 }
 
 .display {
-    width: 100%;
-    height: 50px;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 24px;
     text-align: right;
+    margin-bottom: 20px;
     padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+    background-color: #222;
+    border-radius: 5px;
+}
+
+#history {
+    font-size: 1.2em;
+    color: #aaa;
+    height: 20px;
+    overflow: hidden;
+}
+
+#result {
+    font-size: 2.5em;
+    height: 40px;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    gap: 10px;
 }
 
-button {
-    padding: 15px;
-    font-size: 18px;
+.buttons button {
     border: none;
+    background-color: #555;
+    color: white;
+    font-size: 1.5em;
+    padding: 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-button:hover {
-    opacity: 0.8;
+.buttons button:hover {
+    background-color: #777;
 }
 
-button:not(.operator, .equals, .zero) {
-    background-color: #fff;
-    color: #333;
+.btn-op, .btn-equal {
+    background-color: #f39c12;
 }
 
-button:not(.operator, .equals, .zero):hover {
-    background-color: #e0e0e0;
+.btn-op:hover, .btn-equal:hover {
+    background-color: #e67e22;
 }
 
-.operator {
-    background-color: #ff9500;
-    color: #fff;
+.btn-clear {
+    grid-column: span 1;
+    background-color: #c0392b;
 }
 
-.operator:hover {
-    background-color: #e08a00;
+.btn-clear:hover {
+    background-color: #e74c3c;
 }
 
-.equals {
-    background-color: #28a745;
-    color: #fff;
-    grid-row: span 2;
-}
-
-.equals:hover {
-    background-color: #218838;
-}
-
-.zero {
+.btn-zero {
     grid-column: span 2;
-    background-color: #fff;
-    color: #333;
-}
-
-.zero:hover {
-    background-color: #e0e0e0;
 }
