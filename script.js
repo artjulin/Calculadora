@@ -1,113 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const displayResult = document.getElementById('result');
-    const displayHistory = document.getElementById('history');
-    const buttons = document.querySelector('.buttons');
-    let currentInput = '0';
-    let firstValue = null;
-    let operator = null;
-    let waitForSecondValue = false;
+const tela = document.getElementById('tela');
+let expressao = '';
 
-    function updateDisplay() {
-        displayResult.textContent = currentInput;
+function adicionarNumero(numero) {
+    expressao += numero;
+    tela.value = expressao;
+}
+
+function adicionarOperador(operador) {
+    // Evita adicionar operador se a expressão estiver vazia ou já terminar com um
+    if (expressao === '' && operador !== '-') {
+        return;
     }
+    const ultimoChar = expressao.slice(-1);
+    const operadores = ['+', '-', '*', '/'];
 
-    function handleInput(value) {
-        if (waitForSecondValue) {
-            currentInput = value;
-            waitForSecondValue = false;
-        } else {
-            if (currentInput === '0' || currentInput === 'Error') {
-                currentInput = value;
-            } else {
-                currentInput += value;
-            }
-        }
-        updateDisplay();
+    if (operadores.includes(ultimoChar)) {
+        // Substitui o último operador se um novo for pressionado
+        expressao = expressao.slice(0, -1) + operador;
+    } else {
+        expressao += operador;
     }
+    tela.value = expressao;
+}
 
-    function handleDecimal() {
-        if (!currentInput.includes('.')) {
-            currentInput += '.';
-        }
-        updateDisplay();
+function limparTela() {
+    expressao = '';
+    tela.value = '';
+}
+
+function apagarUltimo() {
+    expressao = expressao.slice(0, -1);
+    tela.value = expressao;
+}
+
+function calcular() {
+    try {
+        // Usa a função eval() para avaliar a expressão.
+        // CUIDADO: eval() pode ser perigoso se a entrada não for controlada. 
+        // Para este caso simples, é aceitável.
+        const resultado = eval(expressao);
+        tela.value = resultado;
+        expressao = String(resultado); // Armazena o resultado para continuar o cálculo
+    } catch (error) {
+        tela.value = 'Erro';
+        expressao = '';
     }
-
-    function handleOperator(nextOperator) {
-        const inputValue = parseFloat(currentInput);
-
-        if (operator && waitForSecondValue) {
-            operator = nextOperator;
-            return;
-        }
-
-        if (firstValue === null) {
-            firstValue = inputValue;
-        } else if (operator) {
-            const result = performCalculation(firstValue, inputValue, operator);
-            currentInput = `${parseFloat(result.toFixed(7))}`;
-            firstValue = result;
-        }
-
-        waitForSecondValue = true;
-        operator = nextOperator;
-        displayHistory.textContent = `${firstValue} ${operator}`;
-        updateDisplay();
-    }
-
-    function performCalculation(first, second, op) {
-        switch (op) {
-            case '+':
-                return first + second;
-            case '-':
-                return first - second;
-            case '&times;':
-                return first * second;
-            case '&divide;':
-                if (second === 0) {
-                    return 'Error';
-                }
-                return first / second;
-            default:
-                return second;
-        }
-    }
-
-    function handleEquals() {
-        if (operator) {
-            const secondValue = parseFloat(currentInput);
-            const result = performCalculation(firstValue, secondValue, operator);
-            currentInput = `${parseFloat(result.toFixed(7))}`;
-            firstValue = result;
-            operator = null;
-            waitForSecondValue = true;
-            displayHistory.textContent = '';
-            updateDisplay();
-        }
-    }
-
-    function handleClear() {
-        currentInput = '0';
-        firstValue = null;
-        operator = null;
-        waitForSecondValue = false;
-        displayHistory.textContent = '';
-        updateDisplay();
-    }
-
-    buttons.addEventListener('click', (event) => {
-        const { textContent } = event.target;
-        if (textContent >= '0' && textContent <= '9') {
-            handleInput(textContent);
-        } else if (textContent === '.') {
-            handleDecimal();
-        } else if (textContent === '=') {
-            handleEquals();
-        } else if (textContent === 'C') {
-            handleClear();
-        } else {
-            handleOperator(textContent);
-        }
-    });
-
-    updateDisplay();
-});
+}
