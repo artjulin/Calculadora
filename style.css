@@ -1,80 +1,73 @@
-display: flex;
+body {
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
-    margin: 0;
 }
 
-.calculator {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+.calculadora {
     background-color: #333;
-    color: white;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 320px;
 }
 
-.display {
+.tela {
+    width: 100%;
+    height: 60px;
+    background-color: #444;
+    border: none;
     text-align: right;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #222;
-    border-radius: 5px;
-}
-
-#history {
-    font-size: 1.2em;
-    color: #aaa;
-    height: 20px;
-    overflow: hidden;
-}
-
-#result {
     font-size: 2.5em;
-    height: 40px;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    pointer-events: none; /* Impede a digitação manual */
 }
 
-.buttons {
+.botoes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
-.buttons button {
-    border: none;
+button {
     background-color: #555;
-    color: white;
-    font-size: 1.5em;
+    color: #fff;
+    border: none;
     padding: 20px;
+    font-size: 1.5em;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.buttons button:hover {
+button:hover {
     background-color: #777;
 }
 
-.btn-op, .btn-equal {
-    background-color: #f39c12;
+.operador {
+    background-color: #ff9500;
 }
 
-.btn-op:hover, .btn-equal:hover {
-    background-color: #e67e22;
+.operador:hover {
+    background-color: #ffb547;
 }
 
-.btn-clear {
-    grid-column: span 1;
-    background-color: #c0392b;
+.igual {
+    background-color: #007bff;
+    grid-column: span 2;
 }
 
-.btn-clear:hover {
-    background-color: #e74c3c;
+.igual:hover {
+    background-color: #0056b3;
 }
 
-.btn-zero {
+.zero {
     grid-column: span 2;
 }
