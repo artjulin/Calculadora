@@ -1,48 +1,40 @@
-const tela = document.getElementById('tela');
-let expressao = '';
+const display = document.getElementById('display');
 
-function adicionarNumero(numero) {
-    expressao += numero;
-    tela.value = expressao;
-}
-
-function adicionarOperador(operador) {
-    // Evita adicionar operador se a expressão estiver vazia ou já terminar com um
-    if (expressao === '' && operador !== '-') {
-        return;
-    }
-    const ultimoChar = expressao.slice(-1);
-    const operadores = ['+', '-', '*', '/'];
-
-    if (operadores.includes(ultimoChar)) {
-        // Substitui o último operador se um novo for pressionado
-        expressao = expressao.slice(0, -1) + operador;
+function appendNumber(number) {
+    if (display.value === '0' && number !== '.') {
+        display.value = number;
     } else {
-        expressao += operador;
+        display.value += number;
     }
-    tela.value = expressao;
 }
 
-function limparTela() {
-    expressao = '';
-    tela.value = '';
+function appendOperator(operator) {
+    const lastChar = display.value.slice(-1);
+    if (['+', '-', '*', '/'].includes(lastChar)) {
+        display.value = display.value.slice(0, -1) + operator;
+    } else {
+        display.value += operator;
+    }
 }
 
-function apagarUltimo() {
-    expressao = expressao.slice(0, -1);
-    tela.value = expressao;
+function clearDisplay() {
+    display.value = '0';
 }
 
-function calcular() {
+function deleteLast() {
+    display.value = display.value.slice(0, -1);
+    if (display.value === '') {
+        display.value = '0';
+    }
+}
+
+function calculate() {
     try {
-        // Usa a função eval() para avaliar a expressão.
-        // CUIDADO: eval() pode ser perigoso se a entrada não for controlada. 
-        // Para este caso simples, é aceitável.
-        const resultado = eval(expressao);
-        tela.value = resultado;
-        expressao = String(resultado); // Armazena o resultado para continuar o cálculo
-    } catch (error) {
-        tela.value = 'Erro';
-        expressao = '';
+        display.value = eval(display.value);
+        if (display.value === 'Infinity' || display.value === '-Infinity') {
+            display.value = 'Error';
+        }
+    } catch (e) {
+        display.value = 'Error';
     }
 }
