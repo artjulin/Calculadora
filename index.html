@@ -1,13 +1,5 @@
-Calculadora em HTML, CSS e JavaScript
-Aqui está o código para uma calculadora simples, com cada parte em seu próprio arquivo, como você pediu. Você pode copiar cada bloco de código e salvar com o nome de arquivo correspondente para montar a sua calculadora.
-
-1. HTML (arquivo: index.html)
-Este arquivo cria a estrutura da calculadora, incluindo o visor e os botões.
-
-HTML
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,33 +7,33 @@ HTML
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="display">
-            <div id="history"></div>
-            <div id="result">0</div>
-        </div>
-        <div class="buttons">
-            <button class="btn-clear">C</button>
-            <button class="btn-op">&divide;</button>
-            <button class="btn-op">&times;</button>
-            <button class="btn-op">&minus;</button>
-            <button class="btn-op">+</button>
 
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="btn-equal">=</button>
-
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-
-            <button class="btn-zero">0</button>
-            <button class="btn-dot">.</button>
+    <div class="calculadora">
+        <input type="text" class="tela" id="tela" readonly>
+        
+        <div class="botoes">
+            <button class="operador" onclick="limparTela()">AC</button>
+            <button class="operador" onclick="apagarUltimo()">DEL</button>
+            <button class="operador" onclick="adicionarOperador('/')">/</button>
+            <button class="operador" onclick="adicionarOperador('X')">X</button>
+            
+            <button onclick="adicionarNumero('7')">7</button>
+            <button onclick="adicionarNumero('8')">8</button>
+            <button onclick="adicionarNumero('9')">9</button>
+            <button class="operador" onclick="adicionarOperador('-')">-</button>
+            
+            <button onclick="adicionarNumero('4')">4</button>
+            <button onclick="adicionarNumero('5')">5</button>
+            <button onclick="adicionarNumero('6')">6</button>
+            <button class="operador" onclick="adicionarOperador('+')">+</button>
+            
+            <button onclick="adicionarNumero('1')">1</button>
+            <button onclick="adicionarNumero('2')">2</button>
+            <button onclick="adicionarNumero('3')">3</button>
+            <button class="igual" onclick="calcular()">=</button>
+            
+            <button class="zero" onclick="adicionarNumero('0')">0</button>
+            <button onclick="adicionarNumero('.')">.</button>
         </div>
     </div>
 
