@@ -1,79 +1,95 @@
+/* Estilo geral do corpo */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #121212; /* Fundo muito escuro */
-    font-family: 'Roboto', sans-serif; /* Fonte diferente */
-    color: #e0e0e0;
+    height: 100vh;
     margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
 
+/* Estilo da calculadora */
 .calculadora {
-    background-color: #1e1e1e; /* Fundo mais escuro para a calculadora */
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
-    width: 350px;
-    border: 1px solid #333;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 320px;
 }
 
+/* Estilo da tela */
 .tela {
     width: 100%;
-    height: 70px;
-    background-color: #2b2b2b; /* Fundo da tela escuro */
+    height: 50px;
+    background-color: #fff;
     border: none;
+    border-radius: 5px;
+    font-size: 24px;
     text-align: right;
-    font-size: 2.8em;
-    color: #00ff99; /* Cor verde neon para o texto */
-    padding: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
     box-sizing: border-box;
-    border-radius: 10px;
-    margin-bottom: 20px;
 }
 
+/* Estilo dos botões */
 .botoes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 5px;
 }
 
 button {
-    background-color: #333333; /* Botões escuros */
-    color: #e0e0e0;
+    padding: 20px;
+    font-size: 18px;
     border: none;
-    padding: 22px;
-    font-size: 1.6em;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s;
 }
 
 button:hover {
-    background-color: #4a4a4a;
+    opacity: 0.9;
 }
 
+/* Estilo dos números */
+button:not(.operador, .igual, .zero) {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+button:not(.operador, .igual, .zero):hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo dos operadores */
 .operador {
-    background-color: #ff3366; /* Cor rosa vibrante para operadores */
+    background-color: #ff9500;
     color: #fff;
-    font-weight: bold;
 }
 
 .operador:hover {
-    background-color: #ff6699;
+    background-color: #e08a00;
 }
 
+/* Estilo do botão de igual */
 .igual {
-    background-color: #00ff99; /* Cor verde neon para o igual */
-    color: #121212;
-    font-weight: bold;
-    grid-column: span 2;
+    background-color: #28a745;
+    color: #fff;
+    grid-row: span 2;
 }
 
 .igual:hover {
-    background-color: #33ffb3;
+    background-color: #218838;
 }
 
+/* Estilo do botão zero */
 .zero {
     grid-column: span 2;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.zero:hover {
+    background-color: #e0e0e0;
 }
